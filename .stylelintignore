@@ -1,0 +1,11 @@
+# unconventional files
+/blueprints/*/files/
+
+# compiled output
+/dist/
+
+# test styles
+/tests/dummy/app/styles
+
+# addons
+/.node_modules.ember-try/
