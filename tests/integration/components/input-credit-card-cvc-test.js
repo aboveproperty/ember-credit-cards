@@ -18,4 +18,10 @@ module('Integration | Component | input-credit-card-cvc', function (hooks) {
       '300',
     );
   });
+
+  test('it can specify the input type', async function (assert) {
+    await render(hbs`<InputCreditCardCvc @type="password" />`);
+
+    assert.dom('input').hasAttribute('type', 'password');
+  });
 });

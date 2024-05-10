@@ -10,6 +10,10 @@ function inputValid(value) {
 }
 
 export default class InputCreditCardCvcComponent extends Component {
+  get type() {
+    return this.args.type || 'tel';
+  }
+
   get cvc() {
     return formatters.formatCvc(this.args.cvc);
   }

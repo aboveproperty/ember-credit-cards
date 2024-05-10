@@ -42,4 +42,10 @@ module('Integration | Component | input-credit-card-number', function (hooks) {
     await typeIn('input', '1');
     assert.strictEqual(this.number, '4111111111111111');
   });
+
+  test('it can specify the input type', async function (assert) {
+    await render(hbs`<InputCreditCardNumber @type="password" />`);
+
+    assert.dom('input').hasAttribute('type', 'password');
+  });
 });

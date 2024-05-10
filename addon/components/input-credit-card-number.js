@@ -24,6 +24,10 @@ function inputValid(value) {
 }
 
 export default class InputCreditCardNumberComponent extends Component {
+  get type() {
+    return this.args.type || 'tel';
+  }
+
   get number() {
     return formatters.formatNumber(this.args.number);
   }
