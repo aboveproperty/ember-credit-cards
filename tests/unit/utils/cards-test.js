@@ -25,7 +25,7 @@ module('Unit | Utility | cards', function () {
 
     assert.strictEqual(
       cards.cardType('6007220000000004'),
-      'forbrugsforeningen'
+      'forbrugsforeningen',
     );
 
     assert.strictEqual(cards.cardType('5019717010103742'), 'dankort');

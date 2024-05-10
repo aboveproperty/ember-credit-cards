@@ -7,8 +7,6 @@ module('Integration | Component | credit-card-form', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it should format Card labels correctly with default values', async function (assert) {
-    assert.expect(5);
-
     this.set('setValue', () => {});
 
     await render(
@@ -22,36 +20,36 @@ module('Integration | Component | credit-card-form', function (hooks) {
           @zipcodeRequired={{true}}
           @onUpdate={{this.setValue}}
         />
-      `
+      `,
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-number .control-label').innerHTML,
       'Card Number',
-      'label says Card Number'
+      'label says Card Number',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-cvc .control-label').innerHTML,
       'Security Code',
-      'label says Security Code'
+      'label says Security Code',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-name .control-label').innerHTML,
       'Name on Card',
-      'label reads Name on Card'
+      'label reads Name on Card',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-expiration .control-label').innerHTML,
       'Expiration',
-      'label says Expiration'
+      'label says Expiration',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-zipcode .control-label').innerHTML,
-      'Zip Code'
+      'Zip Code',
     );
   });
 
@@ -72,32 +70,32 @@ module('Integration | Component | credit-card-form', function (hooks) {
           @expirationLabel="Vervalt op"
           @zipCodeLabel="postcode"
         />
-      `
+      `,
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-number .control-label').innerHTML,
-      'Kaartnummer'
+      'Kaartnummer',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-cvc .control-label').innerHTML,
-      'Veiligheidscode'
+      'Veiligheidscode',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-name .control-label').innerHTML,
-      'Naam op Kaart'
+      'Naam op Kaart',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-expiration .control-label').innerHTML,
-      'Vervalt op'
+      'Vervalt op',
     );
 
     assert.strictEqual(
       this.element.querySelector('.cc-zipcode .control-label').innerHTML,
-      'postcode'
+      'postcode',
     );
   });
 });

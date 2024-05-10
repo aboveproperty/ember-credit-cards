@@ -8,8 +8,8 @@ on:
   pull_request: {}
 
 concurrency:
-   group: ci-${{ github.head_ref || github.ref }}
-   cancel-in-progress: true
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
@@ -22,31 +22,14 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-
-      - name: Get package manager's global cache path
-        id: global-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache package manager's global cache and node_modules
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ steps.global-cache-dir-path.outputs.dir }}
-            node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-${{
-            hashFiles('**/yarn.lock'
-            ) }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-
+          node-version: 18
+          cache: npm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-        if: |
-          steps.cache-dependencies.outputs.cache-hit != 'true'
-
-      - name: Test Ember
-        run: yarn test:ember
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Run Tests
+        run: npm run test:ember
 
   floating:
     name: "Floating Dependencies"
@@ -57,27 +40,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-
-      - name: Get package manager's global cache path
-        id: global-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache package manager's global cache and node_modules
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ steps.global-cache-dir-path.outputs.dir }}
-            node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-floating-deps
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-
+          node-version: 18
+          cache: npm
       - name: Install Dependencies
-        run: yarn install --no-lockfile --non-interactive
-
-      - name: Test Ember
-        run: yarn test:ember
+        run: npm install --no-shrinkwrap
+      - name: Run Tests
+        run: npm run test:ember
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
@@ -89,8 +57,8 @@ jobs:
       fail-fast: false
       matrix:
         try-scenario:
-          - ember-lts-4.4
           - ember-lts-4.8
+          - ember-lts-4.12
           - ember-release
           - ember-beta
           - ember-canary
@@ -102,28 +70,9 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v3
         with:
-          node-version: 14.x
-
-      - name: Get package manager's global cache path
-        id: global-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache package manager's global cache and node_modules
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ${{ steps.global-cache-dir-path.outputs.dir }}
-            node_modules
-          key: ${{ runner.os }}-${{ matrix.node-version }}-${{
-            hashFiles('**/yarn.lock'
-            ) }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.node-version }}-
+          node-version: 18
+          cache: npm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-        if: |
-          steps.cache-dependencies.outputs.cache-hit != 'true'
-
+        run: npm ci
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}

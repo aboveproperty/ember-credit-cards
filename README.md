@@ -10,9 +10,9 @@ Checkout the [demo](https://arenoir.github.io/ember-credit-cards/).
 
 ## Compatibility
 
-* Ember.js v4.4 or above
-* Ember CLI v4.4 or above
-* Node.js v14 or above
+* Ember.js v4.8 or above
+* Ember CLI v4.8 or above
+* Node.js v18 or above
 
 
 ## Installation
