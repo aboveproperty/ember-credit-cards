@@ -25,31 +25,31 @@ module('Integration | Component | credit-card-form', function (hooks) {
       `
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-number .control-label').innerHTML,
       'Card Number',
       'label says Card Number'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-cvc .control-label').innerHTML,
       'Security Code',
       'label says Security Code'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-name .control-label').innerHTML,
       'Name on Card',
       'label reads Name on Card'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-expiration .control-label').innerHTML,
       'Expiration',
       'label says Expiration'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-zipcode .control-label').innerHTML,
       'Zip Code'
     );
@@ -75,27 +75,27 @@ module('Integration | Component | credit-card-form', function (hooks) {
       `
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-number .control-label').innerHTML,
       'Kaartnummer'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-cvc .control-label').innerHTML,
       'Veiligheidscode'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-name .control-label').innerHTML,
       'Naam op Kaart'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-expiration .control-label').innerHTML,
       'Vervalt op'
     );
 
-    assert.equal(
+    assert.strictEqual(
       this.element.querySelector('.cc-zipcode .control-label').innerHTML,
       'postcode'
     );

@@ -15,6 +15,9 @@ module('Integration | Component | input-credit-card-cvc', function (hooks) {
       hbs`<InputCreditCardCvc @cvc={{this.cvc}} class="form-control"/>`
     );
 
-    assert.equal(this.element.querySelector('.form-control').value, '300');
+    assert.strictEqual(
+      this.element.querySelector('.form-control').value,
+      '300'
+    );
   });
 });

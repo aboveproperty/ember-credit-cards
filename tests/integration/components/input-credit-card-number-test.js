@@ -15,9 +15,9 @@ module('Integration | Component | input-credit-card-number', function (hooks) {
     await render(
       hbs`<InputCreditCardNumber @number={{this.number}} @onUpdate={{this.onUpdate}} />`
     );
-    assert.equal(this.element.querySelector('input').value, '4242 4');
+    assert.strictEqual(this.element.querySelector('input').value, '4242 4');
     await typeIn('input', '5');
-    assert.equal(this.element.querySelector('input').value, '4242 45');
+    assert.strictEqual(this.element.querySelector('input').value, '4242 45');
   });
 
   test('it should return a value without spaces', async function (assert) {
@@ -29,7 +29,7 @@ module('Integration | Component | input-credit-card-number', function (hooks) {
       hbs`<InputCreditCardNumber @number={{this.number}} @onUpdate={{this.onUpdate}} />`
     );
     await typeIn('input', '41111');
-    assert.equal(this.number, '41111');
+    assert.strictEqual(this.number, '41111');
   });
 
   test("it shouldn't call onUpdate with an invalid length", async function (assert) {
@@ -41,6 +41,6 @@ module('Integration | Component | input-credit-card-number', function (hooks) {
       hbs`<InputCreditCardNumber @number={{this.number}} @onUpdate={{this.onUpdate}} />`
     );
     await typeIn('input', '1');
-    assert.equal(this.number, '4111111111111111');
+    assert.strictEqual(this.number, '4111111111111111');
   });
 });

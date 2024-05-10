@@ -31,7 +31,7 @@ module(
       `
       );
 
-      assert.equal(this.element.querySelector('input').value, '102019');
+      assert.strictEqual(this.element.querySelector('input').value, '102019');
     });
 
     test('should format month shorthand correctly', async function (assert) {
@@ -57,7 +57,7 @@ module(
 
       await typeIn('input', '4');
 
-      assert.equal(this.element.querySelector('input').value, '04 / ');
+      assert.strictEqual(this.element.querySelector('input').value, '04 / ');
     });
 
     test('should format forward slash shorthand correctly', async function (assert) {
@@ -82,7 +82,7 @@ module(
       );
       await typeIn('input', '/');
 
-      assert.equal(this.element.querySelector('input').value, '08 / ');
+      assert.strictEqual(this.element.querySelector('input').value, '08 / ');
     });
 
     test('should only allow numbers', async function (assert) {
@@ -106,11 +106,11 @@ module(
       `
       );
       await typeIn('input', '4');
-      assert.equal(this.element.querySelector('input').value, '04 / ');
+      assert.strictEqual(this.element.querySelector('input').value, '04 / ');
       await typeIn('input', 'd');
 
-      assert.equal(this.month, '04');
-      assert.equal(this.year, '');
+      assert.strictEqual(this.month, '04');
+      assert.strictEqual(this.year, '');
     });
 
     test('should only allow six numbers', async function (assert) {
@@ -134,7 +134,10 @@ module(
       `
       );
 
-      assert.equal(this.element.querySelector('input').value, '04 / 2019');
+      assert.strictEqual(
+        this.element.querySelector('input').value,
+        '04 / 2019'
+      );
     });
   }
 );
