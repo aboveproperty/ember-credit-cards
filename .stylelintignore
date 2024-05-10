@@ -4,8 +4,8 @@
 # compiled output
 /dist/
 
-# test styles
-/tests/dummy/app/styles
+# minified test styles
+/tests/dummy/app/styles/*.min.css
 
 # addons
 /.node_modules.ember-try/
